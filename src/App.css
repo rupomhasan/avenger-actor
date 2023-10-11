@@ -1,0 +1,12 @@
+#root {
+   max-width: 1680px;
+   margin: 0 auto;
+}
+body {
+   background-image: url("https://i.ibb.co/V3qW6pL/avenger.jpg");
+   background-size: cover;
+   background-attachment: fixed;
+}
+.card {
+   display: grid;
+}
