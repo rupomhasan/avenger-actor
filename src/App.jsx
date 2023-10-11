@@ -4,16 +4,30 @@ import Bookmarks from "./Components/Bookmarks";
 import Main from "./Components/Main.jsx";
 function App() {
    const [bookmarks, setBookmarks] = useState([]);
-
+   const [cost ,setCost] = useState(0)
    const handleSetBookmark = (actor) => {
+      const isExist = bookmarks.find((item) => item.id === actor.id);
       const newBookmarks = [...bookmarks, actor];
-      setBookmarks(newBookmarks);
+      let amount = actor.salary;
+
+      console.log(amount);
+      isExist ? alert("Already Exist") : setBookmarks(newBookmarks);
+      bookmarks.forEach((item) => {
+         amount = amount + item.salary;
+      });
+      if (amount > 30000)
+      {
+         alert('You can not buy more actor')
+      }
+      else {
+         setCost(amount)
+      }
    };
 
    return (
       <div className="flex gap-10">
          <Main handleSetBookmark={handleSetBookmark}></Main>
-         <Bookmarks bookmarks={bookmarks}></Bookmarks>
+         <Bookmarks totalCost= {cost} bookmarks={bookmarks}></Bookmarks>
       </div>
    );
 }
